@@ -9,6 +9,33 @@ class ObjectValues {
   }
 }
 
+
+function alertSucess() {
+  const alerta = document.getElementById(`alertSucess`)
+
+  
+  alerta.classList.remove(`hidden`)
+
+
+  setTimeout(() => {
+    alerta.classList.add(`hidden`)
+  }, 2000);
+}
+
+
+function AlertErr(msg) {
+  const alertErr = document.getElementById(`alertErr`)
+
+  
+  alertErr.classList.remove(`hidden`)
+
+  const textMsg = document.getElementById(`textMsg`)
+  textMsg.innerText = msg
+  setTimeout(() => {
+    alertErr.classList.add(`hidden`)
+  }, 2000);
+}
+
 class LoginHttp {
   static async http() {
     try {
@@ -26,17 +53,19 @@ class LoginHttp {
 
 
       if (response.ok) {
-        // location.href = `http://localhost:8000/`
+        alertSucess()
+     return RedirectHandler.redictPageInTimeDefined(`http://localhost:8000/`, 5000)
       }
       
       const data = await response.json();
-      console.log(data);
+      const {error} = data
+      AlertErr(error)
+
       
     // senhaSegura123A@
     
     } catch (error) {
-      console.error('Erro:', error.message);
-      alert('Usuário ou senha inválidos!');
+      AlertErr(error)
     }
   }
 }
@@ -58,3 +87,6 @@ class Btn {
 document.addEventListener('DOMContentLoaded', () => {
   Btn.btn();
 });
+
+
+

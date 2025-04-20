@@ -52,7 +52,7 @@ class UserController extends Controller
 
             ValideUtils::valideBody($data);
             ['usuario' => $usuario, 'password' => $password] = $data;
-            // ValideUtils::validePass($password);
+            ValideUtils::validePass($password);
             $id = ModelLoginControll::login($usuario, $password);
              $tk = JwtService::createToken([$id]);
             
