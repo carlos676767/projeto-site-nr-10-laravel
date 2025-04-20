@@ -26,10 +26,12 @@ class JwtService
         
        
         try {
-            $secretKey = env('JWT_SECRET_KEY');
+            $secretKey = env('JWT_SECRET');
+            error_log($token);
+          return JWT::decode($token, $secretKey);
 
-            return JWT::decode($token, $secretKey);
         } catch (\Exception $e) {
+          
             throw new \Exception("Erro ao decodificar o JWT: " . $e->getMessage());
         }
     }

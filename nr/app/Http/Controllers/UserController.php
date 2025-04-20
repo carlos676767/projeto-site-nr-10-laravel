@@ -10,7 +10,7 @@ use App\service\ServiceVerifyRoleControll;
 use App\Models\ModelInsertControll;
 use App\Models\ModelLoginControll;
 use App\utils\JwtService;
-
+use GuzzleHttp\Exception\RequestException;
 
 class UserController extends Controller
 {
@@ -68,6 +68,25 @@ class UserController extends Controller
                 'error' => $th->getMessage()
             ], 500);
         }
+    }
+
+
+
+    static public function roleUser(Request $req){
+       
+        try {
+            $data = $req ->get('token');
+
+            $tk = JwtService::decodeToken($data);
+            error_log(print_r($tk));
+            return response()->json([
+                'success' => $data,
+            ], 200);
+        } catch (\Throwable $th) {
+            error_log(print_r($th->getMessage()));
+        }
+
+
     }
 }
 

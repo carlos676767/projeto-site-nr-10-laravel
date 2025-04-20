@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 
 Route::post('/insertColaborador', [UserController::class, 'controllAcessDashboard']);
 Route::post('/loginUser', [UserController::class, 'userLogin']);
+Route::post('/getUserTk', [UserController::class, 'roleUser']);
 
 Route::get('/', function () {
     return view('app');

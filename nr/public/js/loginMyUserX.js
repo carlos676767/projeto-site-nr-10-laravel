@@ -51,18 +51,18 @@ class LoginHttp {
         body: ObjectValues.objectValues()
       });
 
-
+      const data = await response.json();
+      
       if (response.ok) {
         alertSucess()
-     return RedirectHandler.redictPageInTimeDefined(`http://localhost:8000/`, 5000)
+        LocalStorageSet.localStorageSetString(`tkUser`,data.token)
+        return RedirectHandler.redictPageInTimeDefined(`http://localhost:8000/`, 5000)
       }
       
-      const data = await response.json();
       const {error} = data
       AlertErr(error)
 
       
-    // senhaSegura123A@
     
     } catch (error) {
       AlertErr(error)

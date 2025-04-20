@@ -87,6 +87,6 @@
 
   <script src="{{ asset('js/loginMyUserX.js') }}"></script>
   <script src="{{ asset('js/redirectPage.js') }}"></script>
-
+  <script src="{{ asset('js/setStorage.js') }}"></script>
 </body>
 </html>

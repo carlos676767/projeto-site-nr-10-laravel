@@ -10,11 +10,7 @@
     <script src="//unpkg.com/alpinejs" defer></script>
   </head>
 
-  <style>
-    a{
-      color: red;
-    }
-  </style>
+
 
 
   <nav x-data="{ isOpen: false }" class="bg-[#DBEAFE] shadow">
@@ -103,7 +99,7 @@
       </aside>
       <!-- Main content -->
       <main class="flex-1 p-8">
-        <h1 class="text-2xl font-semibold mb-6">Bem-vindo, Carlos</h1>
+        <h1 class="text-2xl font-semibold mb-6"> Bem-vindo, Carlos — <span class="font-semibold">Administrador</span></h1>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Colaboradores com NR-10 -->
@@ -160,42 +156,8 @@
   </body>
 
 
-  <script>
-    
-    (async () => {
-  const dados = {
-    usuario: "carlos",
-    senha: "senhaSegura123A@",
-    role: "tecnico"
-  };
-
-  const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-  console.log(csrfToken);
-  
-  try {
-    const resposta = await fetch('http://localhost:8000/insertColaborador', {
-      method: 'POST', 
-      headers: {
-        'Content-Type': 'application/json', 
-        'X-CSRF-TOKEN': csrfToken 
-      },
-      body: JSON.stringify(dados) 
-    });
-
-    const resultado = await resposta.json();
-    console.log( resultado);
-  } catch (erro) {
-    console.error('Erro na requisição:', erro);
-  }
-
-
-})();
-
-
-
-
-
-  </script>
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="{{ asset('js/setStorage.js') }}"></script>
 </html>
 
 
