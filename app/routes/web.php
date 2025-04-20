@@ -2,9 +2,11 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('/test', function () {
+use App\Http\Controllers\UserController;
+
+Route::post('/insertColaborador', [UserController::class, 'controllAcessDashboard']);
+Route::get('/cs', function () {
     return response()->json([
-        'nome' => 'Carlos',
-        'profissao' => 'Desenvolvedor'
+        'csrf_token' => csrf_token(), 
     ]);
 });

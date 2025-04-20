@@ -13,6 +13,11 @@ Um sistema web completo para **controle de treinamentos obrigatórios (NR-10)**,
 - Data de vencimento do curso NR-10.
 - Upload de certificados digitalizados (PDF/JPG).
 
+
+
+
+
+
 #### 2. **Controle de treinamentos**
 - Histórico de cursos (NR-10 Básico, NR-10 SEP, NR-35 etc).
 - Alertas automáticos (via JS) quando um treinamento estiver prestes a vencer.
@@ -44,7 +49,3 @@ Um sistema web completo para **controle de treinamentos obrigatórios (NR-10)**,
 - **PDF**: PDFKit ou dompdf para gerar relatórios.
 - **Chart.js**: para os gráficos de conformidade.
 
-
-Se quiser, posso te ajudar a montar a estrutura de pastas, banco de dados, ou até te guiar passo a passo no desenvolvimento.
-
-Quer começar por qual parte? 😄

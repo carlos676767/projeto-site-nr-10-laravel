@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+</head>
+<body>
+  <script>
+    const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    console.log(csrfToken);
+    
+    fetch('http://localhost:8000/insertColaborador', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-CSRF-TOKEN': csrfToken
+  },
+  body: JSON.stringify({
+    usuario: 'carlosdev',
+    senha: 'segura123',
+    role: 'admin'
+  })
+})
+.then(res => res.json())
+.then(console.log)
+.catch(console.error);
+
+  </script>
+</body>
+</html>
