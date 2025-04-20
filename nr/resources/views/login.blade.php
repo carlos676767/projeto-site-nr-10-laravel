@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - NR-10</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-blue-100 flex items-center justify-center min-h-screen font-sans">
+
+  <div class="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
+    <div class="flex flex-col items-center mb-6">
+      <div class="bg-blue-200 w-16 h-16 rounded-full flex items-center justify-center shadow">
+        <i class="fas fa-user text-blue-600 text-2xl"></i>
+      </div>
+      <h2 class="text-2xl font-semibold mt-4 text-blue-700">Login NR-10</h2>
+    </div>
+
+    <form class="space-y-4">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="email">Usuario</label>
+        <input type="text" id="usuario" name="email" required
+               class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+      
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1" for="password">Senha</label>
+        <input type="password" id="password" name="password" required
+               class="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-400">
+      </div>
+
+      <div class="flex items-center justify-between text-sm">
+        <label class="flex items-center">
+          <input type="checkbox" class="mr-2 text-blue-600">
+          Lembrar-me
+        </label>
+        <a href="#" class="text-blue-500 hover:underline">Esqueci a senha</a>
+      </div>
+
+      <button id="entrar"
+              class="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 rounded-xl transition-all">
+        Entrar
+      </button>
+    </form>
+    
+    <p class="mt-6 text-sm text-center text-gray-600">
+      Ainda não tem uma conta?
+      <a href="#" class="text-blue-500 hover:underline">Registrar</a>
+    </p>
+  </div>
+  <script src="{{ asset('js/loginMyUserX.js') }}"></script>
+
+</body>
+</html>
