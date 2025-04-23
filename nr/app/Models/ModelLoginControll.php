@@ -3,7 +3,7 @@ namespace app\Models;
 
 use Illuminate\Support\Facades\DB;
 
-use function Laravel\Prompts\error;
+
 
 final class ModelLoginControll 
 {

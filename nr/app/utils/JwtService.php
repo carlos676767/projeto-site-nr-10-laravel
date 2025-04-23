@@ -3,7 +3,7 @@
 namespace App\utils;
 
 use Firebase\JWT\JWT;
-
+use Firebase\JWT\Key;
 class JwtService
 {
    
@@ -27,11 +27,12 @@ class JwtService
        
         try {
             $secretKey = env('JWT_SECRET');
-            error_log($token);
-          return JWT::decode($token, $secretKey);
 
+            $decodeToken = JWT::decode($token,new Key($secretKey, 'HS256'));
+            $inArray =(array) $decodeToken;
+
+            return $inArray[0];
         } catch (\Exception $e) {
-          
             throw new \Exception("Erro ao decodificar o JWT: " . $e->getMessage());
         }
     }

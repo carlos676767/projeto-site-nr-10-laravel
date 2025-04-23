@@ -21,7 +21,7 @@
                     <img class="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="">
                 </a>
 
-                <!-- Mobile menu button -->
+              
                 <div class="flex lg:hidden">
                     <button x-cloak @click="isOpen = !isOpen" type="button" class="text-gray-500 dark:text-gray-#DBEAFE hover:text-gray-600 dark:hover:text-gray-400 focus:outline-none focus:text-gray-600 dark:focus:text-gray-400" aria-label="toggle menu">
                         <svg x-show="!isOpen" xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -46,7 +46,7 @@
     
                     <div class="relative mt-4 lg:mt-0 lg:mx-4">
                         <span class="absolute inset-y-0 left-0 flex items-center pl-3">
-                            <svg class="w-4 h-4 text-gray-600 dark:text-gray-300" viewBox="0 0 24 24" fill="none">
+                            <svg id="btnSvg" class="w-4 h-4 text-gray-600 dark:text-gray-300" viewBox="0 0 24 24" fill="none">
                                 <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                             </svg>
                         </span>
@@ -99,7 +99,7 @@
       </aside>
       <!-- Main content -->
       <main class="flex-1 p-8">
-        <h1 class="text-2xl font-semibold mb-6"> Bem-vindo, Carlos — <span class="font-semibold">Administrador</span></h1>
+        <h1 class="text-2xl font-semibold mb-6" id="textRole"> </h1>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           <!-- Colaboradores com NR-10 -->
@@ -120,7 +120,7 @@
             </div>
           </div>
 
-          <!-- Treinamentos vencidos -->
+       
           <div class="bg-white rounded-xl shadow p-4 flex items-center gap-4">
             <div class="text-red-500 text-2xl"><i class="fas fa-exclamation-triangle"></i></div>
             <div>
@@ -156,9 +156,9 @@
   </body>
 
 
+  <script src="{{ asset('js/getStorage.js') }}"></script>
   <script src="{{ asset('js/app.js') }}"></script>
   <script src="{{ asset('js/setStorage.js') }}"></script>
+  <script src="{{ asset('js/redirectPage.js') }}"></script>
+ 
 </html>
-
-
-
