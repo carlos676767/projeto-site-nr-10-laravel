@@ -84,7 +84,7 @@
 
   <body class="bg-blue-100 font-sans">
     <div class="flex flex-col md:flex-row h-screen">
-      <!-- Sidebar -->
+
       <aside class="w-full md:w-16 bg-blue-#DBEAFE flex flex-col items-center py-4 rounded-b-2xl md:rounded-r-2xl shadow-lg md:h-auto">
         <div class="mb-6">
           <div class="w-8 h-8 bg-white rounded-full"></div>
@@ -93,16 +93,19 @@
           <i class="fas fa-home w-6 h-6 bg-blue-300 rounded"></i>
           <i class="fas fa-cogs w-6 h-6 bg-blue-300 rounded"></i>
           <i class="fas fa-user w-6 h-6 bg-blue-300 rounded"></i>
-          <i class="fas fa-bell w-6 h-6 bg-blue-300 rounded"></i>
-          <i class="fas fa-sign-out-alt w-6 h-6 bg-blue-300 rounded"></i>
+          <i class="fas fa-user-plus w-6 h-6 bg-blue-300 text-white p-1 rounded" id="funcionario" title="Cadastrar funcionario"></i>
+
+        
+       <a href="http://localhost:8000/login" title="pagina login">  <i class="fas fa-sign-out-alt w-6 h-6 bg-blue-300 rounded">    </i></a>
+      
         </nav>
       </aside>
-      <!-- Main content -->
+
       <main class="flex-1 p-8">
         <h1 class="text-2xl font-semibold mb-6" id="textRole"> </h1>
         
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- Colaboradores com NR-10 -->
+   
           <div class="bg-white rounded-xl shadow p-4">
             <h2 class="text-sm font-medium mb-2">Colaboradores com NR-10 em dia</h2>
             <div class="w-24 h-24 mx-auto relative">
@@ -129,7 +132,7 @@
             </div>
           </div>
 
-          <!-- Próximos da expiração -->
+       
           <div class="bg-white rounded-xl shadow p-4 flex items-center gap-4">
             <div class="text-yellow-500 text-2xl"><i class="fas fa-exclamation-circle"></i></div>
             <div>
@@ -138,22 +141,129 @@
             </div>
           </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-        <!-- Gráfico de Intervenções elétricas -->
+
         <div class="bg-white rounded-xl shadow p-4 mt-6">
           <h2 class="text-sm font-medium mb-4">Intervenções elétricas registradas</h2>
           <div class="flex items-end space-x-4 h-32">
-            <div class="w-6 bg-blue-300 h-1/5 rounded"></div>
-            <div class="w-6 bg-blue-400 h-2/5 rounded"></div>
-            <div class="w-6 bg-blue-400 h-1/2 rounded"></div>
-            <div class="w-6 bg-blue-500 h-3/5 rounded"></div>
-            <div class="w-6 bg-blue-500 h-4/5 rounded"></div>
-            <div class="w-6 bg-blue-600 h-full rounded"></div>
+          <canvas id="graficoGenero" class="w-full h-48"></canvas>
+
           </div>
         </div>
       </main>
+
+
     </div>
-  </body>
+
+
+
+
+
+  <div id="modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm hidden">
+  <div class="relative bg-white rounded-2xl shadow-2xl w-full max-w-2xl p-8">
+    
+
+    <button id="tnCloser" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800 transition">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+
+
+    <h2 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+    
+      <svg class="w-6 h-6 mr-2 text-blue-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M12 1c2.209 0 4 1.791 4 4s-1.791 4-4 4-4-1.791-4-4 1.791-4 4-4zM3 21h18c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2z"/>
+      </svg>
+      Funcionarios empresa - NR 10
+    </h2>
+    <form class="space-y-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 1c2.209 0 4 1.791 4 4s-1.791 4-4 4-4-1.791-4-4 1.791-4 4-4zM3 21h18c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2z"/>
+          </svg>
+          Nome Funcionário
+        </div>
+      </label>
+      <input type="text" id="nomeFuncionario" placeholder="Carlos" class="w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a10 10 0 100 20 10 10 0 000-20zM12 12h4l-4 4-4-4h4z" />
+          </svg>
+          CPF Funcionário
+        </div>
+      </label>
+      <input type="text"  id="cpfFuncionario" minlength="11" maxlength="11"  placeholder="000.000.000-00" class="w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+    </div>
+  </div>
+
+  <div>
+    <label class="block text-sm font-medium text-gray-700 mb-1">
+      <div class="flex items-center gap-2">
+        <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M6 9l6 6 6-6" />
+        </svg>
+        Setor
+      </div>
+    </label>
+    <input type="text" id="setorFuncionario" placeholder="Ex: TI, Administrativo" class="w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 17v-2a4 4 0 018 0v2" />
+            <circle cx="12" cy="7" r="4" />
+          </svg>
+          Função
+        </div>
+      </label>
+      <select id="funcaoFuncionario" class="w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <option>Eletricista de Manutenção</option>
+        <option>Técnico em Eletrônica</option>
+        <option>Engenheiro Eletricista</option>
+        <option>Assistente Técnico de Eletricidade</option>
+        <option>Supervisor de Segurança Elétrica</option>
+        <option>Operador de Equipamentos Elétricos</option>
+        <option>Instrutor de Treinamento NR-10</option>
+      </select>
+    </div>
+
+    <!-- Campo de Sexo (colocado ao lado da Função) -->
+    <div>
+      <label class="block text-sm font-medium text-gray-700 mb-1">
+        <div class="flex items-center gap-2">
+          <svg class="w-5 h-5 text-gray-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v18M6 9l6 6 6-6" />
+          </svg>
+          Sexo
+        </div>
+      </label>
+      <select id="sexo" class="w-full px-4 py-2 rounded-lg bg-gray-100 border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <option value="Masculino">Masculino</option>
+        <option value="Feminino">Feminino</option>
+        <option value="Outro">Outro</option>
+      </select>
+    </div>
+  </div>
+
+
+  <div class="pt-4 text-right">
+    <button id="cadastrarFuncionario"  class="bg-[#0EA5E9] text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition font-medium">
+      Cadastrar funcionario
+    </button>
+  </div>
+</form>
 
 
   <script src="{{ asset('js/getStorage.js') }}"></script>

@@ -40,7 +40,7 @@ class LoginHttp {
   static async http() {
     try {
       const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-      console.log(csrfToken);
+
       
       const response = await fetch('http://localhost:8000/loginUser', {
         method: 'POST',
@@ -73,7 +73,6 @@ class LoginHttp {
 class Btn {
   static btn() {
     const button = document.querySelector('button');
-
     if (button) {
       button.addEventListener('click', (e) => {
         e.preventDefault(); 
@@ -87,6 +86,3 @@ class Btn {
 document.addEventListener('DOMContentLoaded', () => {
   Btn.btn();
 });
-
-
-
